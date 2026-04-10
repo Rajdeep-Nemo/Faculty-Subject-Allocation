@@ -1,109 +1,110 @@
-# Brainware University — Faculty Subject Allocation System
-## Setup Guide (XAMPP)
+# Faculty Subject Allocation System — Brainware University
+
+![Project Banner](assets/docs/banner.png)
+
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.4-blue.svg)](https://www.php.net/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![Deployment](https://img.shields.io/badge/deployment-InfinityFree-orange.svg)](https://infinityfree.net/)
+
+The **Faculty Subject Allocation System** is a streamlined, web-based platform designed for Brainware University's Computational Sciences Department. It allows faculty members to submit their subject preferences for the upcoming academic year and provides a secure dashboard for the Head of Department (HOD) to manage, filter, and export allocation data.
 
 ---
 
-## 📁 FOLDER STRUCTURE
+## 📸 UI Showcase
 
-```
+| Faculty Submission Form | HOD Management Dashboard |
+| :---: | :---: |
+| ![Form Mockup](assets/docs/form_mockup.png) | ![Dashboard Mockup](assets/docs/dashboard_mockup.png) |
+| *Clean, validation-ready interface for faculty selections.* | *Advanced filtering, stats, and export capabilities for administration.* |
+
+---
+
+## 🚀 Key Features
+
+- **✅ Smart Validation**: Prevents duplicate subject selections and duplicate faculty entries.
+- **📊 Real-time Stats**: HOD dashboard provides instant metrics on total submissions and subject coverage.
+- **🔍 Advanced Filtering**: Search and filter allocations by faculty name or specific subjects.
+- **📥 Multi-format Export**: Download allocation reports in **CSV**, **Excel**, or professionally formatted **PDF**.
+- **📱 Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
+- **⚙️ Auto-Setup**: Database and tables are automatically initialized on the first run.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend**: HTML5, Vanilla CSS3 (Custom Design System), JavaScript (ES6+)
+- **Backend**: PHP 7.4+ / 8.x
+- **Database**: MySQL / MariaDB
+- **Libraries**: [FPDF](http://www.fpdf.org/) (for PDF generation)
+
+---
+
+## 📂 Project Structure
+
+```bash
 brainware-faculty/
-├── index.php              ← Faculty form (main page)
-├── submit.php             ← Handles form submission
-├── hod-dashboard.php      ← HOD panel (password protected)
-├── export-csv.php         ← Export all data as CSV
-├── export-pdf.php         ← Export all data as PDF
-├── db.php                 ← Database config (auto-creates DB & table)
-├── assets/
-│   ├── style.css          ← All styles
-│   ├── form.js            ← Faculty form interactivity
-│   └── dashboard.js       ← HOD dashboard search
-└── fpdf/
-    └── fpdf.php           ← ⚠️ YOU MUST ADD THIS (see Step 3)
+├── index.php              # Faculty preference submission form
+├── landing.php            # Post-submission confirmation page
+├── submit.php             # Backend logic for form processing
+├── hod-dashboard.php      # HOD administrative panel (secure)
+├── db.php                 # Database connection & auto-migration
+├── export-csv.php         # CSV data extraction logic
+├── export-excel.php       # Excel spreadsheet generator
+├── assets/                # CSS, JS, and documentation assets
+│   ├── docs/              # README images and mockups
+│   ├── style.css          # Main application stylesheet
+│   └── form.js            # Frontend interactivity
+└── fpdf/                  # PDF generation library
 ```
 
 ---
 
-## 🚀 STEP-BY-STEP SETUP
+## 💻 Local Setup (XAMPP)
 
-### Step 1 — Copy Project to XAMPP
-Copy the entire `brainware-faculty` folder into:
-```
-C:\xampp\htdocs\brainware-faculty\
-```
-
-### Step 2 — Start XAMPP
-- Open XAMPP Control Panel
-- Start **Apache**
-- Start **MySQL**
-
-### Step 3 — Install FPDF Library (for PDF export)
-1. Go to: https://www.fpdf.org
-2. Click **Download** → download the ZIP
-3. Extract the ZIP
-4. Copy `fpdf.php` into:
+1. **Clone the Project**:
+   ```bash
+   git clone https://github.com/EL-STRIX/Faculty-Subject-Allocation.git
    ```
-   C:\xampp\htdocs\brainware-faculty\fpdf\fpdf.php
-   ```
-
-### Step 4 — Open the App
-Open your browser and go to:
-```
-http://localhost/brainware-faculty/
-```
-
-✅ The database `brainware_faculty` and table `faculty_submissions` will be
-   created automatically on first load. No manual SQL needed!
+2. **Move to htdocs**:
+   Place the project folder in `C:\xampp\htdocs\brainware-faculty\`.
+3. **Start XAMPP**:
+   Ensure **Apache** and **MySQL** are running in your XAMPP Control Panel.
+4. **Access the App**:
+   Navigate to `http://localhost/brainware-faculty/`.
+   *Note: The database `brainware_faculty` will be created automatically.*
 
 ---
 
-## 🔐 HOD DASHBOARD
+## 🌐 Production Deployment
 
-- URL: `http://localhost/brainware-faculty/hod-dashboard.php`
-- Password: **brainware@hod**
+The project is currently configured for deployment on **InfinityFree**. Ensure your `db.php` is updated with your hosting credentials:
 
----
-
-## 📋 FEATURES SUMMARY
-
-| Feature                        | Details                              |
-|-------------------------------|--------------------------------------|
-| Faculty Name Input            | With validation (letters only)       |
-| 4 Subject Dropdowns           | Dynamic — no duplicate subjects      |
-| Progress Bar                  | Shows how many subjects selected     |
-| Duplicate Faculty Guard       | Won't allow same name twice          |
-| HOD Login                     | Password: brainware@hod              |
-| Search/Filter                 | Search by name or subject            |
-| Stats Cards                   | Total, subjects covered, top subject |
-| Export CSV                    | One-click download                   |
-| Export PDF                    | Formatted report with university header |
-| Print View                    | Clean print layout                   |
-| Delete Records                | HOD can remove entries               |
-| Responsive Design             | Works on mobile & desktop            |
-
----
-
-## ⚙️ DATABASE CONFIG (db.php)
-
-Default XAMPP settings — no changes needed:
-```
-Host:     localhost
-User:     root
-Password: (empty)
-Database: brainware_faculty (auto-created)
+```php
+define('DB_HOST', 'your_infinityfree_sql_host');
+define('DB_USER', 'your_username');
+define('DB_PASS', 'your_password');
+define('DB_NAME', 'your_database_name');
 ```
 
 ---
 
-## 🛠️ TROUBLESHOOTING
+## 🔐 Administrative Access
 
-| Problem                  | Solution                                      |
-|--------------------------|-----------------------------------------------|
-| Blank page               | Check Apache & MySQL are running in XAMPP     |
-| DB connection error      | Verify MySQL is started in XAMPP              |
-| PDF export not working   | Make sure fpdf/fpdf.php exists (see Step 3)   |
-| Styles not loading       | Check assets/ folder is inside project folder |
+Access the HOD panel to view and manage all submissions.
+
+- **URL**: `http://your-domain.com/hod-dashboard.php`
+- **Default Password**: `brainware@hod`
 
 ---
 
-*Brainware University — Computational Sciences Department*
-*Faculty Subject Allocation System — Academic Year 2025–2026*
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+<div align="center">
+  <p><i>Computational Sciences Department — Brainware University</i></p>
+  <p><b>Academic Year 2025–2026</b></p>
+</div>
