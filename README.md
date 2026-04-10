@@ -106,6 +106,12 @@ Access the HOD panel to view and manage all submissions.
 
 ---
 
+## 👥 Contributors
+
+*(Waiting for your first contribution!)*
+
+---
+
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
