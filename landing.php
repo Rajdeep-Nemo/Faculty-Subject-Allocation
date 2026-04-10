@@ -11,7 +11,7 @@ if (isset($_GET['logout'])) {
 // Handle faculty login — must be BEFORE any HTML output
 $faculty_error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['faculty_password'])) {
-    if ($_POST['faculty_password'] === 'brainware@faculty') {
+    if ($_POST['faculty_password'] === 'brainware') {
         $_SESSION['faculty_authenticated'] = true;
         header('Location: index.php');
         exit;
