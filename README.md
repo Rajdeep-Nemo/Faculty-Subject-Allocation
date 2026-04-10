@@ -70,21 +70,29 @@ brainware-faculty/
    Place the project folder in `C:\xampp\htdocs\brainware-faculty\`.
 3. **Start XAMPP**:
    Ensure **Apache** and **MySQL** are running in your XAMPP Control Panel.
-4. **Access the App**:
+4. **Configure Database**:
+   Open `db.php` and ensure the credentials match your local environment:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'root');
+   define('DB_PASS', '');
+   define('DB_NAME', 'brainware_faculty');
+   ```
+5. **Access the App**:
    Navigate to `http://localhost/brainware-faculty/`.
-   *Note: The database `brainware_faculty` will be created automatically.*
+   *Note: The database `brainware_faculty` will be created automatically on the first visit.*
 
 ---
 
 ## 🌐 Production Deployment
 
-The project is currently configured for deployment on **InfinityFree**. Ensure your `db.php` is updated with your hosting credentials:
+The project is currently configured for deployment on **InfinityFree**. The credentials in `db.php` are:
 
 ```php
-define('DB_HOST', 'your_infinityfree_sql_host');
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
-define('DB_NAME', 'your_database_name');
+define('DB_HOST', 'sql100.infinityfree.com');
+define('DB_USER', 'if0_41629436');
+define('DB_PASS', 'VrQOyzOJuiRreQ');
+define('DB_NAME', 'if0_41629436_brainware_faculty');
 ```
 
 ---
@@ -94,7 +102,7 @@ define('DB_NAME', 'your_database_name');
 Access the HOD panel to view and manage all submissions.
 
 - **URL**: `http://your-domain.com/hod-dashboard.php`
-- **Default Password**: `Contact Department Administrator`
+- **HOD Password**: `brainware`
 
 ---
 
